@@ -1,8 +1,13 @@
 definitions:
-  controller.SuccessResponse:
+  controller.CodeResponse:
     properties:
       code:
         type: integer
+    type: object
+  controller.CookieResponse:
+    properties:
+      cookie:
+        type: string
     type: object
 info:
   contact: {}
@@ -12,15 +17,54 @@ info:
 paths:
   /:
     get:
-      description: Get Main Stat
+      description: Get Main
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/controller.SuccessResponse'
-      summary: Get Main Stat
+            $ref: '#/definitions/controller.CookieResponse'
+      summary: Get Main
       tags:
       - main
+  /moretech5:
+    get:
+      description: Get Moretech5
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller.CodeResponse'
+      summary: Get Moretech5
+      tags:
+      - Moretech5
+  /smolathon:
+    get:
+      description: Get Smolathon
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller.CodeResponse'
+      summary: Get Smolathon
+      tags:
+      - Smolathon
+  /urbaton:
+    get:
+      description: Get Urbaton
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller.CodeResponse'
+      summary: Get Urbaton
+      tags:
+      - Urbaton
 swagger: "2.0"

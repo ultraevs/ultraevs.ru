@@ -3,6 +3,7 @@ package main
 import (
 	_ "app/docs"
 	"app/internal/api/router"
+	"app/internal/database"
 	"app/internal/logging"
 	"fmt"
 	"github.com/joho/godotenv"
@@ -22,6 +23,7 @@ func main() {
 		os.Exit(1)
 	}
 	Router := router.NewRouter()
+	database.ConnectDatabase()
 	if err := Router.Run(os.Getenv("SERVER_PORT")); err != nil {
 		logging.Log.Fatalf("server wasn't started: %+v", err)
 		os.Exit(1)

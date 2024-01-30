@@ -17,19 +17,79 @@ const docTemplate = `{
     "paths": {
         "/": {
             "get": {
-                "description": "Get Main Stat",
+                "description": "Get Main",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
                     "main"
                 ],
-                "summary": "Get Main Stat",
+                "summary": "Get Main",
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/controller.SuccessResponse"
+                            "$ref": "#/definitions/controller.CookieResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/moretech5": {
+            "get": {
+                "description": "Get Moretech5",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Moretech5"
+                ],
+                "summary": "Get Moretech5",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controller.CodeResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/smolathon": {
+            "get": {
+                "description": "Get Smolathon",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Smolathon"
+                ],
+                "summary": "Get Smolathon",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controller.CodeResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/urbaton": {
+            "get": {
+                "description": "Get Urbaton",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Urbaton"
+                ],
+                "summary": "Get Urbaton",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controller.CodeResponse"
                         }
                     }
                 }
@@ -37,11 +97,19 @@ const docTemplate = `{
         }
     },
     "definitions": {
-        "controller.SuccessResponse": {
+        "controller.CodeResponse": {
             "type": "object",
             "properties": {
                 "code": {
                     "type": "integer"
+                }
+            }
+        },
+        "controller.CookieResponse": {
+            "type": "object",
+            "properties": {
+                "cookie": {
+                    "type": "string"
                 }
             }
         }
