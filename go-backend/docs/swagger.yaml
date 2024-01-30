@@ -1,0 +1,26 @@
+definitions:
+  controller.SuccessResponse:
+    properties:
+      code:
+        type: integer
+    type: object
+info:
+  contact: {}
+  description: ultraevs.ru API
+  title: Portfolio Service API
+  version: "1.0"
+paths:
+  /:
+    get:
+      description: Get Main Stat
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller.SuccessResponse'
+      summary: Get Main Stat
+      tags:
+      - main
+swagger: "2.0"
