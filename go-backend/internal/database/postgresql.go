@@ -34,4 +34,16 @@ func ConnectDatabase() {
 		Db = db
 		fmt.Println("Successfully connected to database!")
 	}
+	// Создаем таблицу 'sessions', если её нет
+	createTableSQL := `
+	CREATE TABLE IF NOT EXISTS sessions (
+		id SERIAL PRIMARY KEY,
+		cookie_value VARCHAR(255) UNIQUE,
+		created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+	);`
+	_, err = Db.Exec(createTableSQL)
+	if err != nil {
+		fmt.Println("Произошла ошибка при создании таблицы sessions:", err)
+		panic(err)
+	}
 }

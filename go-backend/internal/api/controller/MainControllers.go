@@ -1,6 +1,8 @@
 package controller
 
 import (
+	"app/internal/database"
+	"fmt"
 	_ "github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
 )
@@ -24,11 +26,41 @@ func GetMain(context *gin.Context) {
 	cookie, err := context.Cookie("session")
 	if err != nil {
 		response := CookieResponse{Cookie: "Zero"}
-		context.HTML(401, "index.html", gin.H{"response": response})
+		context.JSON(401, gin.H{"response": response})
 		return
 	}
+
+	if exists, err := SessionExistsInDatabase(cookie); err != nil {
+		response := CookieResponse{Cookie: cookie}
+		context.HTML(200, "index.html", gin.H{"response": response})
+		return
+	} else if !exists {
+		err = SaveSessionToDatabase(cookie)
+		if err != nil {
+			fmt.Println("Произошла ошибка при сохранении сессии в базу данных:", err)
+			context.JSON(500, gin.H{"error": "Internal Server Error"})
+			return
+		}
+	}
+
 	response := CookieResponse{Cookie: cookie}
 	context.HTML(200, "index.html", gin.H{"response": response})
+}
+
+func SessionExistsInDatabase(cookieValue string) (bool, error) {
+	var exists bool
+	row := database.Db.QueryRow("SELECT EXISTS(SELECT 1 FROM sessions WHERE cookie_value = $1);", cookieValue)
+	err := row.Scan(&exists)
+	if err != nil {
+		return false, err
+	}
+	return exists, nil
+}
+
+func SaveSessionToDatabase(cookieValue string) error {
+	insertSQL := "INSERT INTO sessions (cookie_value) VALUES ($1);"
+	_, err := database.Db.Exec(insertSQL, cookieValue)
+	return err
 }
 
 // GetSmolathon godoc
