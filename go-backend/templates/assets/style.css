@@ -104,7 +104,6 @@ footer {
     color: #007bff;
 }
 
-/* Адаптивность */
 @media (max-width: 600px) {
     header {
         padding: 15px 0;
@@ -113,10 +112,26 @@ footer {
     a {
         margin-right: 10px;
     }
+
+    main {
+        padding: 20px 10px;
+    }
+
+    .section {
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+    }
+
+    .project-item,
+    .skill-item,
+    .hackathon-item {
+        padding: 10px;
+    }
 }
+
 .hackathon-details {
     max-width: 800px;
-    margin: 20px auto; /* Центрируем блок и добавляем отступ сверху и снизу */
+    margin: 20px auto;
     padding: 20px;
     background-color: #333;
     border-radius: 10px;
@@ -129,8 +144,7 @@ footer {
 
 .hackathon-achievement {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
     margin-bottom: 20px;
 }
 
@@ -154,6 +168,7 @@ footer {
 .hackathon-presentation h2 {
     color: #007bff;
 }
+
 .back-button {
     margin-top: 20px;
     text-align: center;
@@ -173,6 +188,71 @@ footer {
     background-color: #0056b3;
 }
 
+#contact {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 0 auto 40px;
+    max-width: 900px;
+}
+
+#contact input,
+#contact textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #444;
+    color: #fff;
+}
+
+#contact textarea {
+    resize: vertical;
+}
+
+#contact button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#contact button:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 600px) {
+    #contact input,
+    #contact textarea {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    #contact {
+        padding: 15px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+    }
+
+    #contact input,
+    #contact textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+    }
+
+    #contact button {
+        width: 100%;
+    }
+}
 
 @keyframes fadeIn {
     to {

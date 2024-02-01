@@ -45,4 +45,5 @@ func (router *Router) Setup() {
 	}))
 	router.engine.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	router.MainRoutes()
+	router.CallbackRoutes()
 }
