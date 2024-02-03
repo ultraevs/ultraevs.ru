@@ -10,13 +10,4 @@ services:
       - DOCKER_MODE=1
     ports:
       - "8081:8081"
-    env_file:
-      - .env
-
-  postgres:
-    image: postgres:latest
-    restart: always
-    env_file:
-      - .env
-    ports:
-      - "5432:5432"
+    network_mode: host
