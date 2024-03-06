@@ -5,6 +5,7 @@ import (
 	"fmt"
 	_ "github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 )
 
 type CodeResponse struct {
@@ -25,9 +26,9 @@ type CookieResponse struct {
 func GetMain(context *gin.Context) {
 	cookie, err := context.Cookie("session")
 	if err != nil {
-		response := CookieResponse{Cookie: "Zero"}
-		context.JSON(401, gin.H{"response": response})
-		return
+		value := uuid.New().String()
+		context.SetCookie("session", value, 60*60*24*400, "/", "ultraevs.ru", false, false)
+		context.Set("session", value)
 	}
 
 	if exists, err := SessionExistsInDatabase(cookie); err != nil {
