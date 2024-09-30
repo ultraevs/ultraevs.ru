@@ -1,7 +1,7 @@
 version: "3.3"
 
 services:
-  backend:
+  my_backend:
     build:
       context: ../go-backend/
       dockerfile: Dockerfile
@@ -9,5 +9,4 @@ services:
     environment:
       - DOCKER_MODE=1
     ports:
-      - "8081:8081"
-    network_mode: host
+      - "8080:8080"
