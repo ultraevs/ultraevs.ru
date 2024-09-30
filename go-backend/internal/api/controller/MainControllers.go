@@ -99,3 +99,16 @@ func GetMoretech5(context *gin.Context) {
 	response := CodeResponse{Message: 200}
 	context.HTML(200, "moretech5.html", gin.H{"response": response})
 }
+
+
+// GetInnoHack godoc
+// @Summary Get InnoHack
+// @Description Get InnoHack
+// @Produce json
+// @Tags InnoHack
+// @Success 200 {object} CodeResponse
+// @Router /inno [get]
+func GetMoretech5(context *gin.Context) {
+	response := CodeResponse{Message: 200}
+	context.HTML(200, "inno.html", gin.H{"response": response})
+}
