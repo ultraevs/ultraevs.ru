@@ -64,16 +64,16 @@ func SaveSessionToDatabase(cookieValue string) error {
 	return err
 }
 
-// GetSmolathon godoc
-// @Summary Get Smolathon
-// @Description Get Smolathon
+// GetGagarin godoc
+// @Summary Get Gagarin
+// @Description Get Gagarin
 // @Produce json
-// @Tags Smolathon
+// @Tags Gagarin
 // @Success 200 {object} CodeResponse
-// @Router /smolathon [get]
-func GetSmolathon(context *gin.Context) {
+// @Router /gagarin [get]
+func GetGagarin(context *gin.Context) {
 	response := CodeResponse{Message: 200}
-	context.HTML(200, "smolathon.html", gin.H{"response": response})
+	context.HTML(200, "gagarin.html", gin.H{"response": response})
 }
 
 // GetUrbaton godoc
@@ -108,7 +108,7 @@ func GetMoretech5(context *gin.Context) {
 // @Tags InnoHack
 // @Success 200 {object} CodeResponse
 // @Router /inno [get]
-func GetMoretech5(context *gin.Context) {
+func GetInnoHack(context *gin.Context) {
 	response := CodeResponse{Message: 200}
 	context.HTML(200, "inno.html", gin.H{"response": response})
 }
